@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import ProductItem from '../ProductItem';
 import { useStoreContext } from '../../utils/GlobalState';
 import { UPDATE_PRODUCTS } from '../../utils/actions';
@@ -6,6 +6,9 @@ import { useQuery } from '@apollo/client';
 import { QUERY_PRODUCTS } from '../../utils/queries';
 import { idbPromise } from '../../utils/helpers';
 import spinner from '../../assets/spinner.gif';
+import {
+  allProducts,
+} from '../../utils/stripeApi';
 
 function ProductList() {
   const [state, dispatch] = useStoreContext();
@@ -14,7 +17,18 @@ function ProductList() {
 
   const { loading, data } = useQuery(QUERY_PRODUCTS);
 
+  const [allStripeProducts, setAllStripeProducts] = React.useState([]);
+
+
   useEffect(() => {
+    const seeAllProds = async () => {
+    const fullProductList = await allProducts();
+    return fullProductList;
+    }
+    const prods = seeAllProds();
+    prods.then((res) => {
+      setAllStripeProducts(res);
+    });
     if (data) {
       dispatch({
         type: UPDATE_PRODUCTS,
@@ -46,9 +60,9 @@ function ProductList() {
   return (
     <div className="my-2">
       <h2>Our Products:</h2>
-      {state.products.length ? (
+      {allStripeProducts.length ? (
         <div className="flex-row">
-          {filterProducts().map((product) => (
+          {allStripeProducts.map((product) => (
             <ProductItem
               key={product._id}
               _id={product._id}
