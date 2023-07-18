@@ -81,7 +81,7 @@ return (
         Login
       </Typography>
 
-      <form onSubmit={handleFormSubmit}>
+      <form onSubmit={handleFormSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1rem', width: '100%'}}>
         <TextField
           label="Email address"
           placeholder="youremail@test.com"
