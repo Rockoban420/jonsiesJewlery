@@ -53,6 +53,7 @@ function ProductItem(item) {
         <span>${price}</span>
       </div>
       <button style={{ backgroundColor:'#FE7E57'}} onClick={addToCart}>Add to cart</button>
+      
     </div>
   );
 }
