@@ -29,6 +29,7 @@ const CartItem = ({ item }) => {
       dispatch({
         type: UPDATE_CART_QUANTITY,
         _id: item._id,
+        price_id: item.price_id,
         purchaseQuantity: parseInt(value)
       });
       idbPromise('cart', 'put', { ...item, purchaseQuantity: parseInt(value) });
@@ -40,7 +41,7 @@ const CartItem = ({ item }) => {
     <div className="flex-row">
       <div>
         <img
-          src={`/images/${item.image}`}
+          src={`${item.image}`}
           alt=""
         />
       </div>
