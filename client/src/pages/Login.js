@@ -76,8 +76,12 @@ return (
   <Container maxWidth="sm" sx={{ marginTop: '1rem', textAlign: 'center' }}>
     
 
-    <Card sx={{ backgroundColor: '#65C5D7', padding: '2rem', textAlign: 'center' }}>
-      <Typography variant="h4" component="h2" gutterBottom>
+    <Card sx={{ backgroundImage: 'url("https://img.freepik.com/free-vector/cute-eye-sticker-design-element-vector_53876-151330.jpg?w=1380&t=st=1689708835~exp=1689709435~hmac=1743935117eedab48dd4a7fa5ae6d905c54cb71db72f585a39a18c4cc963ad14")', 
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    padding: '2rem',
+    textAlign: 'center' }}>
+      <Typography variant="h4" component="h2" gutterBottom sx={{ color: '#65C5D7', fontFamily: 'times', fontWeight: 'bold' }}>
         Login
       </Typography>
 
