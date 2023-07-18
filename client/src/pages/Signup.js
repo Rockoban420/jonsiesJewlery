@@ -96,7 +96,7 @@ return (
         Sign Up
       </Typography>
 
-      <form onSubmit={handleFormSubmit}>
+      <form onSubmit={handleFormSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1rem', width: '100%'}}>
         <TextField
           label="First Name"
           placeholder="First"
