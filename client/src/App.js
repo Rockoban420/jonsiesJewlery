@@ -61,11 +61,11 @@ function App() {
               display: 'flex',
               flexDirection: 'column',
               minHeight: '100vh',
-              backgroundImage: 'url("https://img.freepik.com/free-vector/hand-drawn-mystical-palmistry-concept_52683-39422.jpg?w=1060&t=st=1689717364~exp=1689717964~hmac=ad1da1d8fa45fdf6b5f038aa96ed7f022c518c2734ab7611124e689185a55fb1")',
-              backgroundPosition: 'center bottom',
+              backgroundImage: 'url("https://img.freepik.com/free-vector/hand-drawn-retro-sun-illustration_23-2150334277.jpg?w=1060&t=st=1689722077~exp=1689722677~hmac=ab5d14dd4391c3bf21394997d7cc33da480b27b0c7d7054347a78f6e6ab9b6a7")',
+              backgroundPosition: 'center top',
               backgroundRepeat: 'no-repeat',
-              backgroundSize: '500px 400px',
-              backgroundColor: '#F9FAF6',
+              backgroundSize: '700px 570px',
+              backgroundColor: '#FBEFD3',
             }}
           >
       <Router>
