@@ -76,13 +76,13 @@ return (
   <Container maxWidth="sm" sx={{ marginTop: '1rem', textAlign: 'center' }}>
     
 
-    <Card sx={{ padding: '2rem', textAlign: 'center' }}>
+    <Card sx={{ backgroundColor: '#65C5D7', padding: '2rem', textAlign: 'center' }}>
       <Typography variant="h4" component="h2" gutterBottom>
         Login
       </Typography>
 
       <form onSubmit={handleFormSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1rem', width: '100%'}}>
-        <TextField
+        <TextField style={{ backgroundColor: 'white' }}
           label="Email address"
           placeholder="youremail@test.com"
           name="email"
@@ -92,7 +92,7 @@ return (
           onChange={handleChange}
         />
 
-        <TextField
+        <TextField style={{ backgroundColor: 'white' }}
           label="Password"
           placeholder="******"
           name="password"
