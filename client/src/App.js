@@ -18,6 +18,8 @@ import { StoreProvider } from './utils/GlobalState';
 import Success from './pages/Success';
 import OrderHistory from './pages/OrderHistory';
 
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+
 const httpLink = createHttpLink({
   uri: '/graphql',
 });
@@ -37,8 +39,21 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#FE7E57', 
+    },
+    typography: {
+      fontFamily: 'Didone',
+    },
+    
+  },
+});
+
 function App() {
   return (
+    <ThemeProvider theme={theme}>
     <ApolloProvider client={client}>
       <Router>
         <div>
@@ -78,6 +93,7 @@ function App() {
         </div>
       </Router>
     </ApolloProvider>
+    </ThemeProvider>
   );
 }
 
