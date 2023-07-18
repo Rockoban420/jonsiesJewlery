@@ -19,7 +19,7 @@ function Success() {
         productData.forEach((item) => {
           idbPromise('cart', 'delete', item);
         });
-      }
+      }          
 
       setTimeout(() => {
         window.location.assign('/');
