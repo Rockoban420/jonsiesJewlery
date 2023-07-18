@@ -1,6 +1,8 @@
 import React from "react";
 import Auth from "../../utils/auth";
 import { Link } from "react-router-dom";
+import { AppBar, Toolbar, Typography } from '@mui/material';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 function Nav() {
 
@@ -39,19 +41,29 @@ function Nav() {
     }
   }
 
-  return (
-    <header className="flex-row px-1">
-      <h1>
-        <Link to="/">
+  const theme = createTheme({
+    palette: {
+      primary: {
+        main: '#FF5722',
+      },
+    },
+  });
+
+
+return (
+  <AppBar position="static">
+    <Toolbar>
+      <Typography variant="h3" component="div" sx={{ flexGrow: 1, textAlign: 'center', margin: '0 24px', fontFamily: 'Didone', fontColor: 'lightpink' }}>
+        <Link to="/" className="navbar-brand">
           Jonsie's Bones
         </Link>
-      </h1>
-
-      <nav>
+      </Typography>
+      <div>
         {showNavigation()}
-      </nav>
-    </header>
-  );
+      </div>
+    </Toolbar>
+  </AppBar>
+);
 }
 
 export default Nav;
