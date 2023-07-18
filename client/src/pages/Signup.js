@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import Auth from '../utils/auth';
 import { ADD_USER } from '../utils/mutations';
+import { Container, Card, Typography, TextField, Button } from '@mui/material';
 
 function Signup(props) {
   const [formState, setFormState] = useState({ email: '', password: '' });
@@ -30,7 +31,7 @@ function Signup(props) {
     });
   };
 
-  return (
+  /* return (
     <div className="container my-1">
       <Link to="/login">← Go to Login</Link>
 
@@ -82,6 +83,69 @@ function Signup(props) {
       </form>
     </div>
   );
+}
+
+export default Signup; */
+
+return (
+  <Container maxWidth="sm" sx={{ marginTop: '1rem' }}>
+    <Link to="/login">← Go to Login</Link>
+
+    <Card sx={{ padding: '2rem', textAlign: 'center' }}>
+      <Typography variant="h4" component="h2" gutterBottom>
+        Sign Up
+      </Typography>
+
+      <form onSubmit={handleFormSubmit}>
+        <TextField
+          label="First Name"
+          placeholder="First"
+          name="firstName"
+          type="firstName"
+          fullWidth
+          margin="normal"
+          onChange={handleChange}
+        />
+
+        <TextField
+          label="Last Name"
+          placeholder="Last"
+          name="lastName"
+          type="lastName"
+          fullWidth
+          margin="normal"
+          onChange={handleChange}
+        />
+
+        <TextField
+          label="Email"
+          placeholder="youremail@test.com"
+          name="email"
+          type="email"
+          fullWidth
+          margin="normal"
+          onChange={handleChange}
+        />
+
+        <TextField
+          label="Password"
+          placeholder="******"
+          name="password"
+          type="password"
+          fullWidth
+          margin="normal"
+          onChange={handleChange}
+        />
+
+        <div sx={{ display: 'flex', justifyContent: 'flex-end', marginTop: '1rem' }}>
+          <Button variant="contained" type="submit">
+            Submit
+          </Button>
+        </div>
+      </form>
+    </Card>
+  </Container>
+);
 }
 
 export default Signup;
