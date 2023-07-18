@@ -18,7 +18,8 @@ import { StoreProvider } from './utils/GlobalState';
 import Success from './pages/Success';
 import OrderHistory from './pages/OrderHistory';
 
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { createTheme, ThemeProvider, Box } from '@mui/material';
+
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -55,6 +56,18 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
     <ApolloProvider client={client}>
+    <Box
+            sx={{
+              display: 'flex',
+              flexDirection: 'column',
+              minHeight: '100vh',
+              backgroundImage: 'url("https://img.freepik.com/free-vector/hand-drawn-mystical-palmistry-concept_52683-39422.jpg?w=1060&t=st=1689717364~exp=1689717964~hmac=ad1da1d8fa45fdf6b5f038aa96ed7f022c518c2734ab7611124e689185a55fb1")',
+              backgroundPosition: 'center bottom',
+              backgroundRepeat: 'no-repeat',
+              backgroundSize: '500px 400px',
+              backgroundColor: '#F9FAF6',
+            }}
+          >
       <Router>
         <div>
           <StoreProvider>
@@ -92,6 +105,7 @@ function App() {
           </StoreProvider>
         </div>
       </Router>
+      </Box>
     </ApolloProvider>
     </ThemeProvider>
   );
