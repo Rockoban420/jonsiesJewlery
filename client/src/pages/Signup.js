@@ -88,9 +88,7 @@ function Signup(props) {
 export default Signup; */
 
 return (
-  <Container maxWidth="sm" sx={{ marginTop: '1rem' }}>
-    <Link to="/login">← Go to Login</Link>
-
+  <Container maxWidth="sm" sx={{ marginTop: '1rem', textAlign: 'center' }}>
     <Card sx={{ padding: '2rem', textAlign: 'center' }}>
       <Typography variant="h4" component="h2" gutterBottom>
         Sign Up
@@ -144,6 +142,7 @@ return (
         </div>
       </form>
     </Card>
+    <Link to="/login">← Go to Login</Link>
   </Container>
 );
 }
