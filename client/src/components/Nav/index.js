@@ -18,7 +18,6 @@ function Nav() {
   });
 
   const user = Auth.getProfile();
-  console.log(user);
 
   return (
     <ThemeProvider theme={theme}>
