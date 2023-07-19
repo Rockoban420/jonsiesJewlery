@@ -22,15 +22,15 @@ const Cart = () => {
   const [sessionData, setSessionData] = React.useState([]);
 
 
-  useEffect(() => {
-    for (let i = 0; i < state.cart.length; i++) {
-      getSinglePorduct(state.cart[i]._id).then((res) => {
-        setAllStripeProducts((prev) => [...prev, res]);
-      }
-      );
-      console.log(allStripeProducts, 'allStripeProducts');
-    }
-  }, [allStripeProducts]);
+  // useEffect(() => {
+  //   for (let i = 0; i < state.cart.length; i++) {
+  //     getSinglePorduct(state.cart[i]._id).then((res) => {
+  //       setAllStripeProducts((prev) => [...prev, res]);
+  //     }
+  //     );
+  //     console.log(allStripeProducts, 'allStripeProducts');
+  //   }
+  // }, [allStripeProducts]);
 
 
   useEffect(() => {
@@ -81,10 +81,12 @@ function submitCheckout() {
   //     });
   //   }
   // });
-  for (let i = 0; i < allStripeProducts.length; i++) {
+  console.log(allStripeProducts, 'allStripeProducts');
+  for (let i = 0; i < state.cart.length; i++) {
     productIds.push({
-      productId: allStripeProducts[i]._id,
-      priceId: allStripeProducts[i].default_price
+      productId: state.cart[i]._id,
+      priceId: state.cart[i].price_id,
+      quantity: state.cart[i].purchaseQuantity
     });
   }
   console.log(productIds, 'productIds');
