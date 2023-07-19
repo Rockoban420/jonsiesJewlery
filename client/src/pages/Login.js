@@ -31,61 +31,15 @@ function Login(props) {
     });
   };
 
-  /* return (
-    <div className="container my-1">
-      <Link to="/signup">← Go to Signup</Link>
-
-      <h2>Login</h2>
-      <form onSubmit={handleFormSubmit}>
-        <div className="flex-row space-between my-2">
-          <label htmlFor="email">Email address:</label>
-          <input
-            placeholder="youremail@test.com"
-            name="email"
-            type="email"
-            id="email"
-            onChange={handleChange}
-          />
-        </div>
-        <div className="flex-row space-between my-2">
-          <label htmlFor="pwd">Password:</label>
-          <input
-            placeholder="******"
-            name="password"
-            type="password"
-            id="pwd"
-            onChange={handleChange}
-          />
-        </div>
-        {error ? (
-          <div>
-            <p className="error-text">The provided credentials are incorrect</p>
-          </div>
-        ) : null}
-        <div className="flex-row flex-end">
-          <button type="submit">Submit</button>
-        </div>
-      </form>
-    </div>
-  );
-}
-
-export default Login; */
 
 return (
   <Container maxWidth="sm" sx={{ marginTop: '1rem', textAlign: 'center' }}>
-    
-
-    <Card sx={{ backgroundImage: 'url("https://img.freepik.com/free-vector/cute-eye-sticker-design-element-vector_53876-151330.jpg?w=1380&t=st=1689708835~exp=1689709435~hmac=1743935117eedab48dd4a7fa5ae6d905c54cb71db72f585a39a18c4cc963ad14")', 
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-    padding: '2rem',
-    textAlign: 'center' }}>
-      <Typography variant="h4" component="h2" gutterBottom sx={{ color: '#65C5D7', fontFamily: 'times', fontWeight: 'bold' }}>
+    <Card sx={{ padding: '2rem', textAlign: 'center', backgroundColor: 'transparent' }}>
+      <Typography variant="h4" component="h2" gutterBottom sx={{ color: '#E85022', fontFamily: 'times', fontWeight: 'bold' }}>
         Login
       </Typography>
 
-      <form onSubmit={handleFormSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1rem', width: '100%'}}>
+      <form onSubmit={handleFormSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1rem', width: '100%' }}>
         <TextField style={{ backgroundColor: 'white' }}
           label="Email address"
           placeholder="youremail@test.com"
@@ -106,12 +60,8 @@ return (
           onChange={handleChange}
         />
 
-        {error && (
-          <Typography variant="body1" sx={{ color: 'red' }}>
-            The provided credentials are incorrect
-          </Typography>
-        )}
-
+        {/* Rest of the form elements */}
+        
         <div sx={{ display: 'flex', justifyContent: 'flex-end', marginTop: '1rem' }}>
           <Button variant="contained" type="submit">
             Submit
