@@ -13,6 +13,7 @@ import {
 import { QUERY_PRODUCTS } from '../utils/queries';
 import { idbPromise } from '../utils/helpers';
 import spinner from '../assets/spinner.gif';
+import { getSinglePorduct } from '../utils/stripeApi';
 
 
 function Detail() {
@@ -54,11 +55,13 @@ function Detail() {
 
   const addToCart = () => {
     const itemInCart = cart.find((cartItem) => cartItem._id === id);
+    console.log(itemInCart);
     if (itemInCart) {
       dispatch({
         type: UPDATE_CART_QUANTITY,
         _id: id,
         purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1,
+        price_id: itemInCart.price_id,
       });
       idbPromise('cart', 'put', {
         ...itemInCart,
@@ -82,6 +85,14 @@ function Detail() {
     idbPromise('cart', 'delete', { ...currentProduct });
   };
 
+  useEffect(() => {
+    getSinglePorduct(id).then((product) => {
+      setCurrentProduct(product);
+    }
+    );
+    console.log(currentProduct);
+  }, [currentProduct]);
+
   return (
     <>
       {currentProduct && cart ? (
@@ -104,7 +115,7 @@ function Detail() {
           </p>
 
           <img
-            src={`/images/${currentProduct.image}`}
+            src={`${currentProduct.image}`}
             alt={currentProduct.name}
           />
         </div>

@@ -1,6 +1,22 @@
 const stripe = require('stripe')('sk_test_51NTbuDBXuASLC5T1znOhIU1hE98xfESEYvrRDnr7TcTP8wSbHD0nLELlUM20ocWRwWQnhipxau0GRuPtG4TdIj3y00isJYTemM');
  // This is where we'll store the full list of products from Stripe
 
+const getSinglePorduct = async (id) => {
+    const product = await stripe.products.retrieve(id);
+    console.log(product);
+    const price = await stripe.prices.retrieve(product.default_price);
+    const singleProduct = {
+        _id: product.id,
+        name: product.name,
+        description: product.description,
+        quantity: product.metadata.quantity,
+        image: product.images[0],
+        price: price.unit_amount / 100,
+        price_id: price.id
+    };
+    return singleProduct;
+}
+
 const allProducts = async () => {
     const fullProductList = [{}];
     const getAllProducts = await stripe.products.list({});
@@ -48,6 +64,7 @@ const checkout = async (sesh) => {
 }
 
 module.exports = {
+    getSinglePorduct,
     allProducts,
     checkout
 };
