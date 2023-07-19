@@ -1,23 +1,32 @@
-import decode from 'jwt-decode';
+import decode from "jwt-decode";
 
 class AuthService {
   getProfile() {
-    return decode(this.getToken());
+    const token = this.getToken();
+    if (!token) {
+      return false;
+    }
+    return decode(token);
   }
 
   loggedIn() {
     // Checks if there is a saved token and it's still valid
     const token = this.getToken();
+    if (!token) {
+      return false;
+    }
     return !!token && !this.isTokenExpired(token);
   }
 
   isTokenExpired(token) {
     try {
+      if (!token) return true;
       const decoded = decode(token);
       if (decoded.exp < Date.now() / 1000) {
         return true;
       } else return false;
     } catch (err) {
+      console.log("expired check failed! Line 42: AuthService.js");
       return false;
     }
   }
@@ -29,6 +38,9 @@ class AuthService {
 
   login(idToken) {
     // Saves user token to localStorage
+    if (!idToken) {
+      return false;
+    }
     localStorage.setItem('id_token', idToken);
 
     window.location.assign('/');
