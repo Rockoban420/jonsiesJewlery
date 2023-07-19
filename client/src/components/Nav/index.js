@@ -22,21 +22,12 @@ function Nav() {
      <ThemeProvider theme={theme}>
       <AppBar position="static" color="transparent" elevation={0}>
         <Toolbar>
-          <Typography variant="h3" component="div" sx={{ flexGrow: 1, textAlign: 'center', fontFamily: 'Didone', color: 'lightpink' }}>
-            <Link to="/" className="navbar-brand" style={{ color: '#F59764', textDecoration: 'none' }}>
+          <Typography variant="h2" component="div" sx={{ flexGrow: 1, textAlign: 'center', fontFamily: 'Ultra' }}>
+            <Link to="/" className="navbar-brand" style={{ color: '#E85022', textDecoration: 'none' }}>
               Jonesie's Bones
             </Link>
           </Typography>
-          <IconButton
-            href="https://www.instagram.com/jonesiesbones/"
-            target="_blank"
-            rel="noopener"
-            aria-label="Instagram"
-            sx={{ color: '#EEABCE' }}
-          >
-            <InstagramIcon />
-          </IconButton>
-        </Toolbar>
+          </Toolbar>
       </AppBar>
       <Box sx={{ display: 'flex', justifyContent: 'center', my: 2 }}>
         {Auth.loggedIn() ? (
