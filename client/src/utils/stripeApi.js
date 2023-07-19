@@ -46,7 +46,7 @@ const checkout = async (sesh) => {
     for (let i = 0; i < sesh.length; i++) {
     line_items.push({
         price: sesh[i].priceId,
-        quantity: 1
+        quantity: sesh[i].quantity
       });
     }
 
