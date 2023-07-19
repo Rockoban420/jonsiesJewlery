@@ -5,8 +5,6 @@ import { AppBar, Toolbar, Typography, IconButton, Box, Button } from '@mui/mater
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import InstagramIcon from '@mui/icons-material/Instagram';
 
-
-
 function Nav() {
   function handleLogout() {
     Auth.logout();

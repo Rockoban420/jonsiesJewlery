@@ -9,6 +9,7 @@ import './style.css';
 import {
   checkout,
   allProducts,
+  getSinglePorduct
 } from '../../utils/stripeApi';
 
 const stripePromise = loadStripe('pk_test_51NTbuDBXuASLC5T1S67fet9OLzbRIVR4OGe8Tx33XszJ7JsgyJ54fwkB6D8B0pYxoUZmund3zlv88YF0hJwRr8Ad004ByNgU02');
@@ -22,14 +23,13 @@ const Cart = () => {
 
 
   useEffect(() => {
-    const seeAllProds = async () => {
-      const fullProductList = await allProducts();
-      return fullProductList;
+    for (let i = 0; i < state.cart.length; i++) {
+      getSinglePorduct(state.cart[i]._id).then((res) => {
+        setAllStripeProducts((prev) => [...prev, res]);
+      }
+      );
+      console.log(allStripeProducts, 'allStripeProducts');
     }
-    const prods = seeAllProds();
-    prods.then((res) => {
-      setAllStripeProducts(res);
-    });
   }, [allStripeProducts]);
 
 
@@ -81,10 +81,10 @@ function submitCheckout() {
   //     });
   //   }
   // });
-  for (let i = 0; i < state.cart.length; i++) {
+  for (let i = 0; i < allStripeProducts.length; i++) {
     productIds.push({
-      productId: state.cart[i]._id,
-      priceId: state.cart[i].price_id
+      productId: allStripeProducts[i]._id,
+      priceId: allStripeProducts[i].default_price
     });
   }
   console.log(productIds, 'productIds');

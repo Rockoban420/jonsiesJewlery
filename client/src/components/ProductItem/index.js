@@ -13,7 +13,8 @@ function ProductItem(item) {
     name,
     _id,
     price,
-    quantity
+    quantity,
+    price_id
   } = item;
 
   const { cart } = state
@@ -24,7 +25,8 @@ function ProductItem(item) {
       dispatch({
         type: UPDATE_CART_QUANTITY,
         _id: _id,
-        purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1
+        purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1,
+        price_id: itemInCart.price_id
       });
       idbPromise('cart', 'put', {
         ...itemInCart,
