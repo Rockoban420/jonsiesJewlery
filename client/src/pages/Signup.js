@@ -3,14 +3,21 @@ import { Link } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 import Auth from "../utils/auth";
 import { ADD_USER } from "../utils/mutations";
-import { Container, Card, Typography, TextField, Button } from "@mui/material";
+import { Container, Card, Typography, TextField, Button, Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions } from "@mui/material";
 
 function Signup(props) {
   const [formState, setFormState] = useState({ email: "", password: "" });
   const [addUser] = useMutation(ADD_USER);
+  const [showModal, setShowModal] = useState(false);
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
+
+    if (formState.password.length < 5) {
+      setShowModal(true);
+      return;
+    }
+
     const mutationResponse = await addUser({
       variables: {
         email: formState.email,
@@ -31,6 +38,10 @@ function Signup(props) {
       [name]: lowerCaseValue,
     });
   };
+
+const handleCloseModal = () => {
+  setShowModal(false);
+};
 
   return (
     <Container maxWidth="sm" sx={{ marginTop: "1rem", textAlign: "center" }}>
@@ -117,6 +128,19 @@ function Signup(props) {
         </form>
       </Card>
       <Link to="/login">← Go to Login</Link>
+
+      <Dialog open={showModal} onClose={handleCloseModal}>
+        <DialogTitle>Oh no!</DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+            Your password must be at least 5 characters long.
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleCloseModal}>Close</Button>
+        </DialogActions>
+      </Dialog>
+
     </Container>
   );
 }
