@@ -1,6 +1,6 @@
 import React from "react";
 
-const Store = () => {
+const About = () => {
   return (
     <div className="container">
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Placerat vestibulum lectus mauris ultrices eros in cursus turpis. Arcu bibendum at varius vel pharetra vel turpis. Ullamcorper a lacus vestibulum sed arcu non. Sapien faucibus et molestie ac feugiat sed lectus vestibulum. Pharetra vel turpis nunc eget lorem. Enim ut sem viverra aliquet eget sit amet. Pretium vulputate sapien nec sagittis aliquam. Massa sed elementum tempus egestas. Libero id faucibus nisl tincidunt eget nullam. Metus dictum at tempor commodo ullamcorper a.
@@ -10,4 +10,4 @@ Tellus cras adipiscing enim eu. Enim ut tellus elementum sagittis vitae et leo d
   );
 };
 
-export default Store;
+export default About;
