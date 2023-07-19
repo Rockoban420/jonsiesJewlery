@@ -32,11 +32,24 @@ function Nav() {
       <Box sx={{ display: 'flex', justifyContent: 'center', my: 2 }}>
         {Auth.loggedIn() ? (
           <>
-            <Button variant="outlined" component={Link} to="/orderHistory" sx={{ mr: 2 }}>
+            <Button variant="outlined" style={{backgroundColor: 'orange'}} component={Link} to="/orderHistory" sx={{ mr: 2 }}>
               Order History
             </Button>
-            <Button variant="outlined" onClick={handleLogout}>
+            <Button variant="outlined" style={{backgroundColor: 'orange'}} onClick={handleLogout}>
               Logout
+            </Button>
+            <Button variant="outlined" style={{backgroundColor: 'orange'}} component={Link} to="/store">
+              Store
+            </Button>
+            <Button
+              variant="outlined" style={{backgroundColor: 'orange'}} component={Link} to="/"
+            >
+              Home
+            </Button>
+            <Button
+              variant="outlined" style={{backgroundColor: 'orange'}} component={Link} to="/about"
+            >
+              About
             </Button>
           </>
         ) : (
@@ -46,6 +59,9 @@ function Nav() {
             </Button>
             <Button variant="outlined" component={Link} to="/login">
               Login
+            </Button>
+            <Button variant="outlined" component={Link} to="/store">
+              Store
             </Button>
           </>
         )}

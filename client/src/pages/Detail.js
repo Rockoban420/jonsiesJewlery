@@ -60,10 +60,12 @@ function Detail() {
         type: UPDATE_CART_QUANTITY,
         _id: id,
         purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1,
+        price_id: itemInCart.price_id,
       });
       idbPromise('cart', 'put', {
         ...itemInCart,
         purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1,
+        price_id: itemInCart.price_id,
       });
     } else {
       dispatch({
