@@ -18,6 +18,9 @@ function Nav() {
     },
   });
 
+  const user = Auth.getProfile();
+  console.log(user);
+
   return (
      <ThemeProvider theme={theme}>
       <AppBar position="static" color="transparent" elevation={0}>
@@ -29,39 +32,52 @@ function Nav() {
           </Typography>
           </Toolbar>
       </AppBar>
-      <Box sx={{ display: 'flex', justifyContent: 'center', my: 2 }}>
+      <Box sx={{ display: 'flex', justifyContent: 'center', my: 2 }} >
         {Auth.loggedIn() ? (
           <>
-            <Button variant="outlined" style={{backgroundColor: 'orange'}} component={Link} to="/orderHistory" sx={{ mr: 2 }}>
+            <Button variant="outlined" style={{backgroundColor: 'orange', marginRight: '5px'}} component={Link} to={`/user/${user.data._id}`} sx={{ mr: 2 }}>
+              User Profile
+            </Button>
+            <Button variant="outlined" style={{backgroundColor: 'orange', marginRight: '5px'}} component={Link} to="/orderHistory" >
               Order History
             </Button>
-            <Button variant="outlined" style={{backgroundColor: 'orange'}} onClick={handleLogout}>
+            <Button variant="outlined" style={{backgroundColor: 'orange', marginRight: '40px'}} onClick={handleLogout}>
               Logout
             </Button>
-            <Button variant="outlined" style={{backgroundColor: 'orange'}} component={Link} to="/store">
+            <Button variant="outlined" style={{backgroundColor: 'orange', marginRight: '5px'}} component={Link} to="/store">
               Store
             </Button>
             <Button
-              variant="outlined" style={{backgroundColor: 'orange'}} component={Link} to="/"
+              variant="outlined" style={{backgroundColor: 'orange', marginRight: '5px'}} component={Link} to="/"
             >
               Home
             </Button>
             <Button
-              variant="outlined" style={{backgroundColor: 'orange'}} component={Link} to="/about"
+              variant="outlined" style={{backgroundColor: 'orange', marginRight: '5px'}} component={Link} to="/about"
             >
               About
             </Button>
           </>
         ) : (
           <>
-            <Button variant="outlined" component={Link} to="/signup" sx={{ mr: 2 }}>
+            <Button variant="outlined" component={Link} style={{backgroundColor: 'orange', marginRight: '5px'}} to="/signup" sx={{ mr: 2 }}>
               Signup
             </Button>
-            <Button variant="outlined" component={Link} to="/login">
+            <Button variant="outlined" component={Link} style={{backgroundColor: 'orange', marginRight: '40px'}} to="/login">
               Login
             </Button>
-            <Button variant="outlined" component={Link} to="/store">
+            <Button variant="outlined" style={{backgroundColor: 'orange', marginRight: '5px'}} component={Link} to="/store">
               Store
+            </Button>
+            <Button
+              variant="outlined" style={{backgroundColor: 'orange', marginRight: '5px'}} component={Link} to="/"
+            >
+              Home
+            </Button>
+            <Button
+              variant="outlined" style={{backgroundColor: 'orange', marginRight: '5px'}} component={Link} to="/about"
+            >
+              About
             </Button>
           </>
         )}

@@ -17,18 +17,6 @@ const Cart = () => {
   const [doCheckout, setDoCheckout] = React.useState(false);
   const [sessionData, setSessionData] = React.useState([]);
 
-
-  // useEffect(() => {
-  //   for (let i = 0; i < state.cart.length; i++) {
-  //     getSinglePorduct(state.cart[i]._id).then((res) => {
-  //       setAllStripeProducts((prev) => [...prev, res]);
-  //     }
-  //     );
-  //     console.log(allStripeProducts, 'allStripeProducts');
-  //   }
-  // }, [allStripeProducts]);
-
-
   useEffect(() => {
     if (doCheckout) {
       checkout(checkoutData).then((res) => {

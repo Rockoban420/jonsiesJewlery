@@ -16,6 +16,7 @@ import Signup from './pages/Signup';
 import Nav from './components/Nav';
 import Store from './pages/Store';
 import About from './pages/About';
+import User from './pages/User';
 import { StoreProvider } from './utils/GlobalState';
 import Success from './pages/Success';
 import OrderHistory from './pages/OrderHistory';
@@ -106,6 +107,10 @@ function App() {
               <Route 
                 path="/products/:id" 
                 element={<Detail />} 
+              />
+              <Route
+                path="/user/:id"
+                element={<User />}
               />
               <Route
                 path="*" 
