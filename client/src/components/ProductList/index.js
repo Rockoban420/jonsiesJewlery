@@ -10,6 +10,8 @@ import {
   allProducts,
 } from '../../utils/stripeApi';
 
+import { Typography } from '@mui/material';
+
 function ProductList() {
   const [state, dispatch] = useStoreContext();
 
@@ -59,7 +61,9 @@ function ProductList() {
 
   return (
     <div className="my-2">
-      <h2>Our Products:</h2>
+      <Typography variant="h4" component="h2" sx={{ fontFamily: 'Ultra', color: '#EEABCE' }}>
+        Products:
+      </Typography>
       {allStripeProducts.length ? (
         <div className="flex-row">
           {allStripeProducts.map((product) => (
@@ -75,7 +79,8 @@ function ProductList() {
           ))}
         </div>
       ) : (
-        <h3>You haven't added any products yet!</h3>
+        <Typography variant="h6" component="h3" sx={{ color: '#EEABCE' }}>
+          You haven't added any products yet!</Typography>
       )}
       {loading ? <img src={spinner} alt="loading" /> : null}
     </div>
