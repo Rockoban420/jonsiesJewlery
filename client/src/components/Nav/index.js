@@ -17,6 +17,9 @@ function Nav() {
     },
   });
 
+  const user = Auth.getProfile();
+  console.log(user);
+
   return (
     <ThemeProvider theme={theme}>
       <AppBar position="static" color="transparent" elevation={0}>
@@ -28,9 +31,12 @@ function Nav() {
           </Typography>
         </Toolbar>
       </AppBar>
-      <Box sx={{ display: 'flex', justifyContent: 'center', my: 2 }}>
+      <Box sx={{ display: 'flex', justifyContent: 'center', my: 2 }} >
         {Auth.loggedIn() ? (
           <>
+            <Button variant="outlined" style={{backgroundColor: 'orange', marginRight: '5px'}} component={Link} to={`/user/${user.data._id}`} sx={{ mr: 2 }}>
+              User Profile
+            </Button>
             <Button variant="outlined" component={Link} to="/" sx={{ mx: 1 }}>
               Home
             </Button>
@@ -58,6 +64,16 @@ function Nav() {
             </Button>
             <Button variant="outlined" component={Link} to="/store" sx={{ mx: 1 }}>
               Store
+            </Button>
+            <Button
+              variant="outlined" style={{backgroundColor: 'orange', marginRight: '5px'}} component={Link} to="/"
+            >
+              Home
+            </Button>
+            <Button
+              variant="outlined" style={{backgroundColor: 'orange', marginRight: '5px'}} component={Link} to="/about"
+            >
+              About
             </Button>
           </>
         )}

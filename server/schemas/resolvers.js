@@ -40,6 +40,13 @@ const resolvers = {
 
       throw new AuthenticationError('Not logged in');
     },
+
+    users: async () => {
+      return await User.find().populate({
+        path: 'orders.products',
+      });
+    },
+    
     order: async (parent, { _id }, context) => {
       if (context.user) {
         const user = await User.findById(context.user._id).populate({
@@ -114,6 +121,11 @@ const resolvers = {
       }
 
       throw new AuthenticationError('Not logged in');
+    },
+    deleteUser: async (parent, args, context) => {
+      if (context.user) {
+        return await User.findByIdAndDelete(context.user._id);
+      }
     },
     updateProduct: async (parent, { _id, quantity }) => {
       const decrement = Math.abs(quantity) * -1;
