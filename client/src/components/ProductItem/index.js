@@ -54,7 +54,8 @@ function ProductItem(item) {
         <div>{quantity} {pluralize("item", quantity)} in stock</div>
         <span>${price}</span>
       </div>
-      <button onClick={addToCart}>Add to cart</button>
+      <button style={{ backgroundColor:'#FE7E57'}} onClick={addToCart}>Add to cart</button>
+      
     </div>
   );
 }
