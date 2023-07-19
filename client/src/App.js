@@ -19,7 +19,9 @@ import Success from './pages/Success';
 import OrderHistory from './pages/OrderHistory';
 
 import { createTheme, ThemeProvider, Box, IconButton } from '@mui/material';
-import InstagramIcon from '@mui/icons-material/Instagram';
+//import InstagramIcon from '@mui/icons-material/Instagram';
+import { Email, Instagram } from '@mui/icons-material';
+
 
 
 
@@ -115,18 +117,23 @@ function App() {
               backgroundColor: '#FBEFD3',
             }}
           >
-            <IconButton
-              href="https://www.instagram.com/jonesiesbones/"
-              target="_blank"
-              rel="noopener"
-              aria-label="Instagram"
-              sx={{ color: '#EEABCE' }}
-            >
-              <InstagramIcon />
-            </IconButton>
+            <Box sx={{ display: 'flex', gap: '1rem' }}>
+              <IconButton
+                href="https://www.instagram.com/jonesiesbones/"
+                target="_blank"
+                rel="noopener"
+                aria-label="Instagram"
+                sx={{ color: '#EEABCE' }}
+              >
+                <Instagram />
+              </IconButton>
+              <a href="mailto:jonesiesbones@gmail.com" style={{ color: '#EEABCE' }}>
+                <Email />
+              </a>
+            </Box>
           </Box>
-      </Box>
-    </ApolloProvider>
+        </Box>
+      </ApolloProvider>
     </ThemeProvider>
   );
 }
