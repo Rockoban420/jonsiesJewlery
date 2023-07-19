@@ -6,11 +6,7 @@ import Auth from '../../utils/auth';
 import { useStoreContext } from '../../utils/GlobalState';
 import { TOGGLE_CART, ADD_MULTIPLE_TO_CART } from '../../utils/actions';
 import './style.css';
-import {
-  checkout,
-  allProducts,
-  getSinglePorduct
-} from '../../utils/stripeApi';
+import { checkout } from '../../utils/stripeApi';
 
 const stripePromise = loadStripe('pk_test_51NTbuDBXuASLC5T1S67fet9OLzbRIVR4OGe8Tx33XszJ7JsgyJ54fwkB6D8B0pYxoUZmund3zlv88YF0hJwRr8Ad004ByNgU02');
 
