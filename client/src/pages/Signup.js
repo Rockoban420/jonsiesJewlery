@@ -35,7 +35,7 @@ function Signup(props) {
 return (
   <Container maxWidth="sm" sx={{ marginTop: '1rem', textAlign: 'center' }}>
     <Card sx={{ padding: '2rem', textAlign: 'center', backgroundColor: 'transparent' }}>
-      <Typography variant="h4" component="h2" gutterBottom sx={{ color: '#E85022', fontFamily: 'times', fontWeight: 'bold' }}>
+    <Typography variant="h4" component="h3" gutterBottom sx={{ color: '#E85022', fontFamily: 'Ultra', fontWeight: 'bold' }}>
         Sign Up
       </Typography>
 

@@ -18,7 +18,9 @@ import { StoreProvider } from './utils/GlobalState';
 import Success from './pages/Success';
 import OrderHistory from './pages/OrderHistory';
 
-import { createTheme, ThemeProvider, Box } from '@mui/material';
+import { createTheme, ThemeProvider, Box, IconButton } from '@mui/material';
+import InstagramIcon from '@mui/icons-material/Instagram';
+
 
 
 const httpLink = createHttpLink({
@@ -105,6 +107,24 @@ function App() {
           </StoreProvider>
         </div>
       </Router>
+      <Box
+            sx={{
+              display: 'flex',
+              justifyContent: 'center',
+              padding: '1rem',
+              backgroundColor: '#FBEFD3',
+            }}
+          >
+            <IconButton
+              href="https://www.instagram.com/jonesiesbones/"
+              target="_blank"
+              rel="noopener"
+              aria-label="Instagram"
+              sx={{ color: '#EEABCE' }}
+            >
+              <InstagramIcon />
+            </IconButton>
+          </Box>
       </Box>
     </ApolloProvider>
     </ThemeProvider>
