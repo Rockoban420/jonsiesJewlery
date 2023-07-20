@@ -74,6 +74,11 @@ function Nav() {
             >
               About
             </Button>
+            <Button
+              variant="outlined" style={{backgroundColor: 'orange', marginRight: '5px'}} component={Link} to="/contact"
+            >
+              Contact
+            </Button>
           </>
         )}
       </Box>

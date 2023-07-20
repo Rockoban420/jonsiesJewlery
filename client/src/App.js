@@ -20,6 +20,7 @@ import User from './pages/User';
 import { StoreProvider } from './utils/GlobalState';
 import Success from './pages/Success';
 import OrderHistory from './pages/OrderHistory';
+import Contact from './pages/Contact';
 
 import { createTheme, ThemeProvider, Box, IconButton } from '@mui/material';
 //import InstagramIcon from '@mui/icons-material/Instagram';
@@ -111,6 +112,10 @@ function App() {
               <Route
                 path="/user/:id"
                 element={<User />}
+              />
+               <Route
+                path="/contact"
+                element={<Contact />}
               />
               <Route
                 path="*" 
