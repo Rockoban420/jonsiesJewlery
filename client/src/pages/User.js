@@ -70,6 +70,7 @@ const User = () => {
         <h4> Name:  {user.firstName}</h4>
         <h4> Last Name: {user.lastName}</h4>
         <h4> Email: {user.email}</h4>
+        <br></br>
 
         <h2 className="text-center">Update Profile</h2>
         <form
@@ -77,7 +78,7 @@ const User = () => {
         onSubmit={handleSubmit}
         >
             <div className="form-group">
-                <label>First Name</label>
+                <label>First Name: </label>
                 <input 
                 type="text" 
                 name="firstName"
@@ -88,7 +89,7 @@ const User = () => {
                 />
             </div>
             <div className="form-group">
-                <label>Last Name</label>
+                <label>Last Name: </label>
                 <input 
                 type="text"
                 name="lastName"
@@ -99,19 +100,21 @@ const User = () => {
                 />
             </div>
             <div className="form-group">
-                <label>Email address</label>
+                <label>Email: </label>
                 <input 
                 type="email" 
                 name="email"
                 value={formState.email} 
                 onChange={handleChange}
                 className="form-control" 
-                placeholder="email" 
+                placeholder="Email" 
                 />
             </div>
-        <Button type="submit"  className="btn btn-primary">Update</Button>
         </form>
-        <Button onClick={handleDelete} > Delete Account </Button>
+        <Button style={{ backgroundColor:'#FE7E57', color:'black', marginTop: '1rem'}} type="submit"  className="btn btn-primary">Update</Button>
+        <br></br>
+        <Button style={{ backgroundColor:'#FE7E57', color:'black', marginTop: '1rem'}} onClick={handleDelete} > Delete Account </Button>
+        
     </div>
   );
 };
