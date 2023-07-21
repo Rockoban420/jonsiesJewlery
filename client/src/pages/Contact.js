@@ -5,10 +5,10 @@ const Contact = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     const name = event.target.name.value;
-    const email = event.target.email.value;
-    const message = event.target.message.value;
+    const message = encodeURIComponent(event.target.message.value);
 
-    const mailtoLink = `mailto:jonesiesbones@gmail.com?subject=Contact Form Submission&body=Name: ${name}%0D%0AEmail: ${email}%0D%0AMessage: ${message}`;
+    const mailtoLink = `mailto:jonesiesbones@gmail.com?subject=Contact Form Submission&body=Name: ${name}%0D%0AMessage: ${message}`;
+
 
     window.location.href = mailtoLink;
   };
@@ -24,16 +24,6 @@ const Contact = () => {
             id="name"
             name="name"
             label="Name"
-            variant="outlined"
-            fullWidth
-            required
-            InputProps={{ style: { backgroundColor: 'white' } }}
-          />
-          <TextField
-            id="email"
-            name="email"
-            label="Email"
-            type="email"
             variant="outlined"
             fullWidth
             required
