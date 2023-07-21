@@ -3,9 +3,13 @@ import { useMutation } from '@apollo/client';
 import Jumbotron from '../components/Jumbotron';
 import { ADD_ORDER } from '../utils/mutations';
 import { idbPromise } from '../utils/helpers';
+import { CLEAR_CART } from '../utils/actions';
+import { useStoreContext } from '../utils/GlobalState';
 
 function Success() {
   const [addOrder] = useMutation(ADD_ORDER);
+  const [state, dispatch] = useStoreContext();
+
 
   useEffect(() => {
     async function saveOrder() {
@@ -22,14 +26,11 @@ function Success() {
             });
           }) 
       products.shift();
-      console.log(products, 'products');
-      console.log('step 1');
       if (products.length) {
         const data2 = [];
         let i = products.length;
         while (i !== 0 ) {
           i = i - 1;
-          console.log('step 2');
           const {
             name,
             price,
@@ -37,16 +38,10 @@ function Success() {
             image
           } = products[i];
           const { data } = await addOrder({variables: {name: name, price: price, quantity: quantity, image: image}});
-          console.log('step 3');
           data2.push(data);
-          console.log(data2, 'data2');
         } 
-        console.log(data2, 'data2');
-        const productData = data2.addOrder.products;
 
-        productData.forEach((item) => {
-          idbPromise('cart', 'delete', item);
-        });
+        dispatch({ type: CLEAR_CART });
       }          
 
       // setTimeout(() => {
