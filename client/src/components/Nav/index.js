@@ -62,21 +62,15 @@ function Nav() {
               Login
             </Button>
             <Button variant="outlined" component={Link} to="/store" sx={{ mx: 1 }}>
-              Store
-            </Button>
-            <Button
-              variant="outlined" style={{backgroundColor: 'orange', marginRight: '5px'}} component={Link} to="/"
-            >
               Home
             </Button>
-            <Button
-              variant="outlined" style={{backgroundColor: 'orange', marginRight: '5px'}} component={Link} to="/about"
-            >
+            <Button variant="outlined" component={Link} to="/store" sx={{ mx: 1 }}>
+              Store
+            </Button>
+            <Button variant="outlined" component={Link} to="/store" sx={{ mx: 1 }}>
               About
             </Button>
-            <Button
-              variant="outlined" style={{backgroundColor: 'orange', marginRight: '5px'}} component={Link} to="/contact"
-            >
+            <Button variant="outlined" component={Link} to="/store" sx={{ mx: 1 }}>
               Contact
             </Button>
           </>
