@@ -15,7 +15,7 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Nav from './components/Nav';
 import Store from './pages/Store';
-import About from './pages/About';
+import About from './pages/about/About';
 import User from './pages/User';
 import { StoreProvider } from './utils/GlobalState';
 import Success from './pages/Success';
