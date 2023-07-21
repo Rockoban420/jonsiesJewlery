@@ -22,13 +22,17 @@ const Cart = () => {
       checkout(checkoutData).then((res) => {
         setSessionData(res);
       });
+    }
+  }, [doCheckout, checkoutData]);
+  
+  useEffect(() => {
+    if (doCheckout && sessionData?.session?.id) {
       stripePromise.then((res) => {
-        res.redirectToCheckout({ sessionId: sessionData?.session?.id });
+        res.redirectToCheckout({ sessionId: sessionData.session.id });
         console.log('redirecting');
       });
     }
-    setDoCheckout(false);
-}, [doCheckout, checkoutData]);
+  }, [doCheckout, sessionData]);
 
 useEffect(() => {
   async function getCart() {
@@ -53,19 +57,10 @@ function calculateTotal() {
   return sum.toFixed(2);
 }
 
-function submitCheckout() {
+function submitCheckout(e) {
   const productIds = [{}];
 
   console.log(state.cart, 'cart');
-  // state.cart.forEach((item) => {
-  //   for (let i = 0; i < item.purchaseQuantity; i++) {
-  //     productIds.push({
-  //       productId: item._id,
-  //       priceId: item.price_id
-  //     });
-  //   }
-  // });
-  console.log(allStripeProducts, 'allStripeProducts');
   for (let i = 0; i < state.cart.length; i++) {
     productIds.push({
       productId: state.cart[i]._id,
@@ -76,6 +71,7 @@ function submitCheckout() {
   console.log(productIds, 'productIds');
   setCheckoutData(productIds);
   setDoCheckout(true);
+  console.log(e);
 }
 
 if (!state.cartOpen) {
@@ -104,7 +100,7 @@ return (
           <strong>Total: ${calculateTotal()}</strong>
 
           {Auth.loggedIn() ? (
-            <button onClick={submitCheckout}>Checkout</button>
+            <button id='checkoutBtn' onClick={submitCheckout}>Checkout</button>
           ) : (
             <span>(log in to check out)</span>
           )}

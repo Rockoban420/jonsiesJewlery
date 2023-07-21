@@ -52,9 +52,11 @@ export const checkout = async (sesh) => {
 
     line_items.shift();
 
+    console.log(line_items);
+
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
-      line_items,
+      line_items: line_items,
       mode: 'payment',
       success_url: `${url}/success`,
       cancel_url: `${url}/`
