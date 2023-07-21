@@ -51,7 +51,7 @@ function Nav() {
             <Button variant="outlined" onClick={handleLogout} sx={{ mx: 1 }}>
               Logout
             </Button>
-             <Button variant="outlined" component={Link} to="/Contact" sx={{ mx: 1 }}>
+             <Button variant="outlined" component={Link} to="/contact" sx={{ mx: 1 }}>
               Contact
             </Button>
           </>
