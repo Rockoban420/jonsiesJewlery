@@ -49,6 +49,10 @@ const typeDefs = gql`
     checkout(products: [ID]!): Checkout
   }
 
+  type ContactFormResponse {
+    message: String!
+  }
+
   type Mutation {
     addUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
     addOrder(products: [ID]!): Order
@@ -56,6 +60,7 @@ const typeDefs = gql`
     deleteUser(_id: ID!): User
     updateProduct(_id: ID!, quantity: Int!): Product
     login(email: String!, password: String!): Auth
+    sendContactForm(name: String!, email: String!, message: String!): ContactFormResponse
   }
 `;
 
