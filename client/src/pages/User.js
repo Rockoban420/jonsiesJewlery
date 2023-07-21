@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button } from "@mui/material";
+import { Button, Typography, Card, CardContent, Container, TextField, CardActions } from "@mui/material";
 import { QUERY_USER } from "../utils/queries";
 import { UPDATE_USER, DELETE_USER } from "../utils/mutations";
 import { useQuery } from "@apollo/client";
@@ -7,115 +7,128 @@ import { useMutation } from "@apollo/client";
 import Auth from "../utils/auth";
 
 const User = () => {
-    const { loading, data } = useQuery(QUERY_USER);
-    const [updateUser] = useMutation(UPDATE_USER);
-    const [deleteUser] = useMutation(DELETE_USER);
-    const [formState, setFormState] = useState({
-        firstName: "",
-        lastName: "",
-        email: "",
-    });
-    const user = data?.user || {};
-    const userId = Auth.getProfile().data._id;
+  const { loading, data } = useQuery(QUERY_USER);
+  const [updateUser] = useMutation(UPDATE_USER);
+  const [deleteUser] = useMutation(DELETE_USER);
+  const [formState, setFormState] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+  });
+  const user = data?.user || {};
+  const userId = Auth.getProfile().data._id;
 
-    const handleDelete = async (e) => {
-        e.preventDefault();
-        try {
-            const { data } = await deleteUser({
-                variables: {
-                    id: userId,
-                },
-            });
-            console.log(data);
-            Auth.logout();
-            window.location.assign("/");
-        } catch (err) {
-            console.error(err);
-        }
-    };
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        try {
-            const { data } = await updateUser({
-                variables: {
-                    firstName: formState.firstName,
-                    lastName: formState.lastName,
-                    email: formState.email,
-                },
-            });
-            console.log(data);
-            window.location.reload();
-        } catch (err) {
-            console.error(err);
-        }
-    };
-
-    if (loading) {
-        return <div>Loading...</div>;
+  const handleDelete = async (e) => {
+    e.preventDefault();
+    try {
+      const { data } = await deleteUser({
+        variables: {
+          id: userId,
+        },
+      });
+      console.log(data);
+      Auth.logout();
+      window.location.assign("/");
+    } catch (err) {
+      console.error(err);
     }
+  };
 
-    const handleChange = (event) => {
-        const { name, value } = event.target;
-        setFormState({
-            ...formState,
-            [name]: value,
-        });
-    };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const { data } = await updateUser({
+        variables: {
+          firstName: formState.firstName,
+          lastName: formState.lastName,
+          email: formState.email,
+        },
+      });
+      console.log(data);
+      window.location.reload();
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormState({
+      ...formState,
+      [name]: value,
+    });
+  };
 
   return (
-    <div className="container">
-        <h2 className="text-center">User Profile</h2>
-        <h4> Name:  {user.firstName}</h4>
-        <h4> Last Name: {user.lastName}</h4>
-        <h4> Email: {user.email}</h4>
-        <br></br>
+    <Container maxWidth="sm" sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', my: '1' }}>
+      <Card sx={{ backgroundColor: 'transparent', boxShadow: 'none', textAlign: 'center', width: '100%' }}>
+          <Typography variant="h3" sx={{ color: '#674B3D', fontFamily: 'Ultra', mb: 2 }}>User Profile</Typography>
+          <Typography variant="h5" sx={{ fontFamily: 'Ultra', color: '#89C6E7' }}>Name: {user.firstName}</Typography>
+          <Typography variant="h5" sx={{ fontFamily: 'Ultra', color: '#89C6E7' }}>Last Name: {user.lastName}</Typography>
+          <Typography variant="h5" sx={{ fontFamily: 'Ultra', color: '#89C6E7' }}>Email: {user.email}</Typography>
+      </Card>
 
-        <h2 className="text-center">Update Profile</h2>
-        <form
-        className="flex-row justify-center justify-space-between-md align-center"
-        onSubmit={handleSubmit}
-        >
-            <div className="form-group">
-                <label>First Name: </label>
-                <input 
-                type="text" 
-                name="firstName"
-                value={formState.firstName} 
-                onChange={handleChange}
-                className="form-control" 
-                placeholder="First Name" 
-                />
-            </div>
-            <div className="form-group">
-                <label>Last Name: </label>
-                <input 
-                type="text"
-                name="lastName"
-                value={formState.lastName} 
-                onChange={handleChange}
-                className="form-control" 
-                placeholder="Last Name" 
-                />
-            </div>
-            <div className="form-group">
-                <label>Email: </label>
-                <input 
-                type="email" 
-                name="email"
-                value={formState.email} 
-                onChange={handleChange}
-                className="form-control" 
-                placeholder="Email" 
-                />
-            </div>
-        </form>
-        <Button style={{ backgroundColor:'#FE7E57', color:'black', marginTop: '1rem'}} type="submit"  className="btn btn-primary">Update</Button>
-        <br></br>
-        <Button style={{ backgroundColor:'#FE7E57', color:'black', marginTop: '1rem'}} onClick={handleDelete} > Delete Account </Button>
-        
-    </div>
+<Card sx={{ backgroundColor: 'transparent', boxShadow: 'none', textAlign: 'center', width: '95%', m: 'auto', pt: '7rem', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+  <Typography variant="h5" sx={{ color: '#674B3D', fontFamily: 'Ultra', mb: 2 }}>Update Profile</Typography>
+  <form
+    onSubmit={handleSubmit}
+    style={{ display: 'flex', flexDirection: 'column', gap: '1rem', alignItems: 'center', width: '100%' }}
+  >
+    <TextField
+      id="firstName"
+      name="firstName"
+      label="First Name"
+      variant="outlined"
+      required
+      value={formState.firstName}
+      onChange={handleChange}
+      sx={{ width: '85%', backgroundColor: 'white', '& .MuiInputLabel-root': { left: 0 } }}
+    />
+    <TextField
+      id="lastName"
+      name="lastName"
+      label="Last Name"
+      variant="outlined"
+      required
+      value={formState.lastName}
+      onChange={handleChange}
+      sx={{ width: '85%', backgroundColor: 'white', '& .MuiInputLabel-root': { left: 0 } }}
+    />
+    <TextField
+      id="email"
+      name="email"
+      label="Email"
+      type="email"
+      variant="outlined"
+      required
+      value={formState.email}
+      onChange={handleChange}
+      sx={{ width: '85%', backgroundColor: 'white', '& .MuiInputLabel-root': { left: 0 } }}
+    />
+    <Button variant="contained" color="primary" type="submit">
+      Update
+    </Button>
+  </form>
+</Card>
+
+
+
+
+
+
+      <Button
+        variant="contained"
+        color="secondary"
+        style={{ marginTop: '6rem', backgroundColor: '#FE7E57', color: 'black', alignItems: 'center' }}
+        onClick={handleDelete}
+      >
+        Delete Account
+      </Button>
+    </Container>
   );
 };
 
