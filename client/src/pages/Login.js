@@ -3,11 +3,12 @@ import { useMutation } from "@apollo/client";
 import { Link } from "react-router-dom";
 import { LOGIN } from "../utils/mutations";
 import Auth from "../utils/auth";
-import { Container, Card, Typography, TextField, Button } from "@mui/material";
+import { Container, Card, Typography, TextField, Button, Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions } from "@mui/material";
 
 function Login(props) {
   const [formState, setFormState] = useState({ email: "", password: "" });
   const [login, { error }] = useMutation(LOGIN);
+  const [showModal, setShowModal] = useState(false);
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
@@ -18,6 +19,7 @@ function Login(props) {
       const token = mutationResponse.data.login.token;
       Auth.login(token);
     } catch (e) {
+      setShowModal(true);
       console.log(e);
     }
   };
@@ -28,6 +30,10 @@ function Login(props) {
       ...formState,
       [name]: value.toLowerCase(),
     });
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
   };
 
   return (
@@ -95,6 +101,19 @@ function Login(props) {
         </form>
       </Card>
       <Link to="/signup">← Go to Signup</Link>
+
+      <Dialog open={showModal} onClose={handleCloseModal}>
+        <DialogTitle>Oh no!</DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+            Incorrect username or password. Please try again.
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleCloseModal}>Close</Button>
+        </DialogActions>
+      </Dialog>
+
     </Container>
   );
 }
