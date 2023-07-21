@@ -8,7 +8,7 @@ const Contact = () => {
   };
 
   return (
-    <Container maxWidth="sm" sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '2rem' }}>
+    <Container maxWidth="sm" sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '1rem' }}>
       <Typography variant="h3" sx={{ fontFamily: 'Ultra', color: '#674B3D' }} gutterBottom>
         Contact Us
       </Typography>

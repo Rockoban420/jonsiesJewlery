@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
+import { Container, Typography, Button } from '@mui/material';
 
 import Cart from '../components/Cart';
 import { useStoreContext } from '../utils/GlobalState';
@@ -15,7 +16,6 @@ import { idbPromise } from '../utils/helpers';
 import spinner from '../assets/spinner.gif';
 import { getSinglePorduct } from '../utils/stripeApi';
 
-
 function Detail() {
   const [state, dispatch] = useStoreContext();
   const { id } = useParams();
@@ -27,11 +27,10 @@ function Detail() {
   const { products, cart } = state;
 
   useEffect(() => {
-    // already in global store
     if (products.length) {
       setCurrentProduct(products.find((product) => product._id === id));
     }
-    // retrieved from server
+  
     else if (data) {
       dispatch({
         type: UPDATE_PRODUCTS,
@@ -89,36 +88,40 @@ function Detail() {
   useEffect(() => {
     getSinglePorduct(id).then((product) => {
       setCurrentProduct(product);
-    }
-    );
+    });
   }, []);
 
   return (
     <>
       {currentProduct && cart ? (
-        <div className="container my-1">
+        <Container maxWidth="sm" sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', my: 1 }}>
           <Link to="/">← Back to Products</Link>
+          <Typography variant="h4" sx={{ color: '#674B3D', fontFamily: 'Ultra', my: 2 }}>
+            {currentProduct.name}
+          </Typography>
 
-          <h2>{currentProduct.name}</h2>
+          <img src={`${currentProduct.image}`} alt={currentProduct.name} style={{ width: '70%' }} />
 
-          <p>{currentProduct.description}</p>
+          <Typography variant="h5" sx={{ fontFamily: 'Ultra', color: '#EC6C44' }}>Price: ${currentProduct.price}</Typography>
 
-          <p>
-            <strong>Price:</strong>${currentProduct.price}{' '}
-            <button onClick={addToCart}>Add to Cart</button>
-            <button
+          <Typography variant="body1" sx={{ my: 2 }}>
+            {currentProduct.description}
+          </Typography>
+
+          <Typography variant="body1" sx={{ my: 2 }}>
+            <Button variant="contained" sx={{ backgroundColor: '#EC6C44', color: 'white', mx: 1 }} onClick={addToCart}>
+              Add to Cart
+            </Button>
+            <Button
+              variant="contained"
+              sx={{ backgroundColor: '#F4B19C', color: 'white' }}
               disabled={!cart.find((p) => p._id === currentProduct._id)}
               onClick={removeFromCart}
             >
               Remove from Cart
-            </button>
-          </p>
-
-          <img
-            src={`${currentProduct.image}`}
-            alt={currentProduct.name}
-          />
-        </div>
+            </Button>
+          </Typography>
+        </Container>
       ) : null}
       {loading ? <img src={spinner} alt="loading" /> : null}
       <Cart />
