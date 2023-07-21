@@ -61,7 +61,7 @@ function ProductList() {
 
   return (
     <div className="my-2">
-      <Typography variant="h4" component="h2" sx={{ fontFamily: 'Ultra', color: '#EEABCE' }}>
+      <Typography variant="h3" component="h2" sx={{ fontFamily: 'Ultra', color: '#674B3D', textAlign: 'center' }} >
         Products:
       </Typography>
       {allStripeProducts.length ? (
