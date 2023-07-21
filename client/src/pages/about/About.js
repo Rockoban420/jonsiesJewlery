@@ -11,11 +11,11 @@ const AboutMe = () => {
           height="200"
           src={kimImage}
           alt="Kim Jones"
-          sx={{ borderRadius: '50%', margin: '20px auto 0', width: 200, height: 200, border: '2px solid white' }}
+          sx={{ borderRadius: '50%', margin: '20px auto 0', width: 250, height: 250, border: '2px solid white' }}
         />
         <CardContent>
-          <Typography variant="h4" gutterBottom>
-            Hi, I'm Kim Jones
+          <Typography variant="h4" sx={{ fontFamily: 'Ultra', color: '#674B3D' }} gutterBottom>
+            Hi, I'm Kim Jones!
           </Typography>
           <Typography variant="body1">
             I'm a passionate jewelry creator based in the vibrant city of Portland, Oregon. My love for exploring nature
