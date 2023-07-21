@@ -6,6 +6,8 @@ import {
   ApolloProvider,
   createHttpLink,
 } from '@apollo/client';
+import { ApolloLink } from 'apollo-link';
+import { onError } from '@apollo/client/link/error';
 import { setContext } from '@apollo/client/link/context';
 
 import Home from './pages/Home';
@@ -15,7 +17,7 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Nav from './components/Nav';
 import Store from './pages/Store';
-import About from './pages/About';
+import About from './pages/about/About';
 import User from './pages/User';
 import { StoreProvider } from './utils/GlobalState';
 import Success from './pages/Success';
@@ -26,15 +28,14 @@ import { createTheme, ThemeProvider, Box, IconButton } from '@mui/material';
 //import InstagramIcon from '@mui/icons-material/Instagram';
 import { Email, Instagram } from '@mui/icons-material';
 
-
-
-
 const httpLink = createHttpLink({
   uri: '/graphql',
 });
 
 const authLink = setContext((_, { headers }) => {
+  // get the authentication token from local storage if it exists
   const token = localStorage.getItem('id_token');
+  // return the headers to the context so httpLink can read them
   return {
     headers: {
       ...headers,
@@ -43,8 +44,18 @@ const authLink = setContext((_, { headers }) => {
   };
 });
 
+const errorLink = onError(({ graphQLErrors, networkError }) => {
+  if (graphQLErrors)
+    graphQLErrors.forEach(({ message, locations, path }) =>
+      console.log(
+        `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`
+      )
+    );
+  if (networkError) console.log(`[Network error]: ${networkError}`);
+});
+
 const client = new ApolloClient({
-  link: authLink.concat(httpLink),
+  link: ApolloLink.from([authLink, errorLink, httpLink]),
   cache: new InMemoryCache(),
 });
 

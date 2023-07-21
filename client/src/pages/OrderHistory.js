@@ -11,6 +11,7 @@ function OrderHistory() {
   if (data) {
     user = data.user;
   }
+  console.log(user, 'user');
 
   return (
     <>
@@ -28,12 +29,10 @@ function OrderHistory() {
                   {new Date(parseInt(order.purchaseDate)).toLocaleDateString()}
                 </h3>
                 <div className="flex-row">
-                  {order.products.map(({ _id, image, name, price }, index) => (
+                  {order.products.map(({image, name, price }, index) => (
                     <div key={index} className="card px-1 py-1">
-                      <Link to={`/products/${_id}`}>
-                        <img alt={name} src={`/images/${image}`} />
+                        <img alt={name} src={`${image}`} />
                         <p>{name}</p>
-                      </Link>
                       <div>
                         <span>${price}</span>
                       </div>
@@ -41,7 +40,8 @@ function OrderHistory() {
                   ))}
                 </div>
               </div>
-            ))}
+            ))
+            }
           </>
         ) : null}
       </div>
