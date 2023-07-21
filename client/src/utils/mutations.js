@@ -66,3 +66,13 @@ export const UPDATE_USER = gql`
     }
   }
 `;
+
+export const DELETE_USER = gql`
+mutation DeleteUser($id: ID!) {
+  deleteUser(_id: $id) {
+    email
+    firstName
+    lastName
+  }
+}
+`;
