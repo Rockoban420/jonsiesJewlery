@@ -8,7 +8,7 @@
   background-color: var(--light);
   overflow: auto;
   padding: .5rem;
-  box-shadow: 0 0 1rem rgba(0, 0, 0, .5);
+  /* box-shadow: 0 0 1rem rgba(0, 0, 0, .5); */
   border-bottom-left-radius: .5rem;
 }
 
@@ -37,15 +37,10 @@
   right: 1%;
   font-size: 2rem;
   cursor: pointer;
-  background-color: var(--secondary);
   border-radius: 50%;
   padding: .25rem;
   width: 50px;
   height: 50px;
-}
-
-.cart-closed:hover {
-  transform: rotate(8deg);
 }
 
 .cart img {
