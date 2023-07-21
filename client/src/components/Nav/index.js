@@ -33,7 +33,7 @@ function Nav() {
       <Box sx={{ display: 'flex', justifyContent: 'center', my: 2 }} >
         {Auth.loggedIn() ? (
           <>
-            <Button variant="outlined" component={Link} to="/signup" sx={{ mx: 1 }}>
+            <Button variant="outlined" sx={{ mx: 1 }} component={Link} to={`/user/${user.data._id}`}>
               User Profile
             </Button>
             <Button variant="outlined" component={Link} to="/" sx={{ mx: 1 }}>
@@ -51,7 +51,9 @@ function Nav() {
             <Button variant="outlined" onClick={handleLogout} sx={{ mx: 1 }}>
               Logout
             </Button>
-            
+             <Button variant="outlined" component={Link} to="/Contact" sx={{ mx: 1 }}>
+              Contact
+            </Button>
           </>
         ) : (
           <>
@@ -61,16 +63,16 @@ function Nav() {
             <Button variant="outlined" component={Link} to="/login" sx={{ mx: 1 }}>
               Login
             </Button>
-            <Button variant="outlined" component={Link} to="/store" sx={{ mx: 1 }}>
+            <Button variant="outlined" component={Link} to="/" sx={{ mx: 1 }}>
               Home
             </Button>
             <Button variant="outlined" component={Link} to="/store" sx={{ mx: 1 }}>
               Store
             </Button>
-            <Button variant="outlined" component={Link} to="/store" sx={{ mx: 1 }}>
+            <Button variant="outlined" component={Link} to="/About" sx={{ mx: 1 }}>
               About
             </Button>
-            <Button variant="outlined" component={Link} to="/store" sx={{ mx: 1 }}>
+            <Button variant="outlined" component={Link} to="/Contact" sx={{ mx: 1 }}>
               Contact
             </Button>
           </>
