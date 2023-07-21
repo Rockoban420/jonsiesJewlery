@@ -95,7 +95,7 @@ function Detail() {
     <>
       {currentProduct && cart ? (
         <Container maxWidth="sm" sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', my: 1 }}>
-          <Link to="/">← Back to Products</Link>
+          <Link to="/Store">← Back to Products</Link>
           <Typography variant="h4" sx={{ color: '#674B3D', fontFamily: 'Ultra', my: 2 }}>
             {currentProduct.name}
           </Typography>
