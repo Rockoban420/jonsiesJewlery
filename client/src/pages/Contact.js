@@ -4,7 +4,13 @@ import { Container, Typography, TextField, Button } from '@mui/material';
 const Contact = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
-    alert("Thank you for your message!");
+    const name = event.target.name.value;
+    const email = event.target.email.value;
+    const message = event.target.message.value;
+
+    const mailtoLink = `mailto:jonesiesbones@gmail.com?subject=Contact Form Submission&body=Name: ${name}%0D%0AEmail: ${email}%0D%0AMessage: ${message}`;
+
+    window.location.href = mailtoLink;
   };
 
   return (

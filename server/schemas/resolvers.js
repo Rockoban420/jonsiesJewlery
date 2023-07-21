@@ -151,6 +151,7 @@ const resolvers = {
     },
     sendContactForm: async (parent, { name, email, message }) => {
       return { message: 'Thank you for your message!' };
+
     }
 }
 };
