@@ -148,8 +148,11 @@ const resolvers = {
       const token = signToken(user);
 
       return { token, user };
+    },
+    sendContactForm: async (parent, { name, email, message }) => {
+      return { message: 'Thank you for your message!' };
     }
-  }
+}
 };
 
 module.exports = resolvers;
