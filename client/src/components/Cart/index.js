@@ -7,6 +7,7 @@ import { useStoreContext } from '../../utils/GlobalState';
 import { TOGGLE_CART, ADD_MULTIPLE_TO_CART } from '../../utils/actions';
 import './style.css';
 import { checkout } from '../../utils/stripeApi';
+import ShoppingCartRoundedIcon from '@mui/icons-material/ShoppingCartRounded';
 
 const stripePromise = loadStripe('pk_test_51NTbuDBXuASLC5T1S67fet9OLzbRIVR4OGe8Tx33XszJ7JsgyJ54fwkB6D8B0pYxoUZmund3zlv88YF0hJwRr8Ad004ByNgU02');
 
@@ -57,14 +58,7 @@ function submitCheckout() {
   const productIds = [{}];
 
   console.log(state.cart, 'cart');
-  // state.cart.forEach((item) => {
-  //   for (let i = 0; i < item.purchaseQuantity; i++) {
-  //     productIds.push({
-  //       productId: item._id,
-  //       priceId: item.price_id
-  //     });
-  //   }
-  // });
+
   console.log(allStripeProducts, 'allStripeProducts');
   for (let i = 0; i < state.cart.length; i++) {
     productIds.push({
@@ -82,7 +76,7 @@ if (!state.cartOpen) {
   return (
     <div className="cart-closed" onClick={toggleCart}>
       <span role="img" aria-label="trash">
-        🛒
+        <ShoppingCartRoundedIcon sx={{ color: '#FE7E57', fontSize: '125%' }} />
       </span>
     </div>
   );
