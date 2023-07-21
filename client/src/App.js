@@ -140,6 +140,7 @@ function App() {
             sx={{
               display: 'flex',
               justifyContent: 'center',
+              flexWrap: 'wrap',
               padding: '1rem',
               backgroundColor: '#FBEFD3',
             }}
@@ -155,7 +156,7 @@ function App() {
                 <Instagram />
               </IconButton>
               <a href="mailto:jonesiesbones@gmail.com" style={{ color: '#EEABCE' }}>
-                <Email />
+              <Email sx={{marginTop: '8px' }}/>
               </a>
             </Box>
           </Box>
