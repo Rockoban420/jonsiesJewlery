@@ -33,7 +33,7 @@ function Nav() {
       <Box sx={{ display: 'flex', justifyContent: 'center', my: 2 }} >
         {Auth.loggedIn() ? (
           <>
-            <Button variant="outlined" style={{backgroundColor: 'orange', marginRight: '5px'}} component={Link} to={`/user/${user.data._id}`} sx={{ mr: 2 }}>
+            <Button variant="outlined" sx={{ mx: 1 }} component={Link} to={`/user/${user.data._id}`}>
               User Profile
             </Button>
             <Button variant="outlined" component={Link} to="/" sx={{ mx: 1 }}>
@@ -65,17 +65,17 @@ function Nav() {
               Store
             </Button>
             <Button
-              variant="outlined" style={{backgroundColor: 'orange', marginRight: '5px'}} component={Link} to="/"
+              variant="outlined" sx={{ mx: 1 }} component={Link} to="/"
             >
               Home
             </Button>
             <Button
-              variant="outlined" style={{backgroundColor: 'orange', marginRight: '5px'}} component={Link} to="/about"
+              variant="outlined" sx={{ mx: 1 }} component={Link} to="/about"
             >
               About
             </Button>
             <Button
-              variant="outlined" style={{backgroundColor: 'orange', marginRight: '5px'}} component={Link} to="/contact"
+              variant="outlined" sx={{ mx: 1 }} component={Link} to="/contact"
             >
               Contact
             </Button>
