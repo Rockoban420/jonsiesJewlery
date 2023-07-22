@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Typography } from '@mui/material';
 
 import { useQuery } from '@apollo/client';
 import { QUERY_USER } from '../utils/queries';
@@ -20,9 +21,9 @@ function OrderHistory() {
 
         {user ? (
           <>
-            <h2>
+            <Typography variant="h4" sx={{ fontFamily: 'Ultra', color: '#674B3D' }} gutterBottom>
               Order History for {user.firstName} {user.lastName}
-            </h2>
+            </Typography>
             {user.orders.map((order) => (
               <div key={order._id} className="my-2">
                 <h3>
