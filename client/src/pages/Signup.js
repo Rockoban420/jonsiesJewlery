@@ -32,7 +32,7 @@ function Signup(props) {
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    const lowerCaseValue = value.toLowerCase();
+    const lowerCaseValue = name === "email" ? value.toLowerCase() : value;
     setFormState({
       ...formState,
       [name]: lowerCaseValue,
