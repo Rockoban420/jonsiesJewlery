@@ -11,9 +11,9 @@ const User = () => {
   const [updateUser] = useMutation(UPDATE_USER);
   const [deleteUser] = useMutation(DELETE_USER);
   const [formState, setFormState] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
+    firstName: undefined,
+    lastName: undefined,
+    email: undefined,
   });
   const user = data?.user || {};
   const userId = Auth.getProfile().data._id;
@@ -37,14 +37,35 @@ const User = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await updateUser({
-        variables: {
-          firstName: formState.firstName,
-          lastName: formState.lastName,
-          email: formState.email,
-        },
-      });
-      console.log(data);
+      switch (e.target.childNodes[1].id) {
+        case "firstName":
+          const { fdata } = await updateUser({
+            variables: {
+              firstName: formState.firstName,
+            },
+          });
+          console.log(fdata);
+          break;
+        case "lastName":
+          const { ldata } = await updateUser({
+            variables: {
+              lastName: formState.lastName,
+            },
+          });
+          console.log(ldata);
+          break;
+        case "email":
+          const { edata } = await updateUser({
+            variables: {
+              email: formState.email,
+            },
+          });
+          console.log(edata);
+          break;
+        default:
+          break;
+      }
+
       window.location.reload();
     } catch (err) {
       console.error(err);
@@ -83,33 +104,46 @@ const User = () => {
       name="firstName"
       label="First Name"
       variant="outlined"
-      required
       value={formState.firstName}
       onChange={handleChange}
       sx={{ width: '85%', backgroundColor: 'white', '& .MuiInputLabel-root': { left: 0 } }}
     />
+    <Button id="firstName" variant="contained" color="primary" type="submit">
+      Update
+    </Button>
+    </form>
+    <form
+    onSubmit={handleSubmit}
+    style={{ display: 'flex', flexDirection: 'column', gap: '1rem', alignItems: 'center', width: '100%' }}
+    >
     <TextField
       id="lastName"
       name="lastName"
       label="Last Name"
       variant="outlined"
-      required
       value={formState.lastName}
       onChange={handleChange}
       sx={{ width: '85%', backgroundColor: 'white', '& .MuiInputLabel-root': { left: 0 } }}
     />
+    <Button id="lastName" variant="contained" color="primary" type="submit">
+      Update
+    </Button>
+    </form>
+    <form
+    onSubmit={handleSubmit}
+    style={{ display: 'flex', flexDirection: 'column', gap: '1rem', alignItems: 'center', width: '100%' }}
+    >
     <TextField
       id="email"
       name="email"
       label="Email"
       type="email"
       variant="outlined"
-      required
       value={formState.email}
       onChange={handleChange}
       sx={{ width: '85%', backgroundColor: 'white', '& .MuiInputLabel-root': { left: 0 } }}
     />
-    <Button variant="contained" color="primary" type="submit">
+    <Button id="email" variant="contained" color="primary" type="submit">
       Update
     </Button>
   </form>

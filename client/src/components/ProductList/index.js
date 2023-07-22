@@ -66,7 +66,7 @@ function ProductList() {
       </Typography>
       {allStripeProducts.length ? (
         <div className="flex-row">
-          {allStripeProducts.map((product) => (
+          {allStripeProducts.map((product) => ( 
             <ProductItem
               key={product._id}
               _id={product._id}
