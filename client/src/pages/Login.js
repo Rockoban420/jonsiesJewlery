@@ -24,13 +24,14 @@ function Login(props) {
     }
   };
 
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    setFormState({
-      ...formState,
-      [name]: value.toLowerCase(),
-    });
-  };
+const handleChange = (event) => {
+  const { name, value } = event.target;
+  const lowerCaseValue = name === "email" ? value.toLowerCase() : value;
+  setFormState({
+    ...formState,
+    [name]: lowerCaseValue,
+  });
+};
 
   const handleCloseModal = () => {
     setShowModal(false);
