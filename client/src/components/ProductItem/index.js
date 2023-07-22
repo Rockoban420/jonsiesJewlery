@@ -17,11 +17,6 @@ function ProductItem(item) {
     price_id
   } = item;
 
-  if (quantity === 0) {
-    console.log("Out of stock");
-    return;
-  }
-
   const { cart } = state
 
   const addToCart = () => {
@@ -47,7 +42,7 @@ function ProductItem(item) {
   }
 
   return (
-    <div className="card px-1 py-1">]
+    <div className="card px-1 py-1">
       <Link to={`/products/${_id}`}>
         <img
           alt={name}
