@@ -1,10 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import ProductItem from '../ProductItem';
 import { useStoreContext } from '../../utils/GlobalState';
-import { UPDATE_PRODUCTS } from '../../utils/actions';
-import { useQuery } from '@apollo/client';
-import { QUERY_PRODUCTS } from '../../utils/queries';
-import { idbPromise } from '../../utils/helpers';
 import spinner from '../../assets/spinner.gif';
 import {
   allProducts,
@@ -14,10 +10,6 @@ import { Typography } from '@mui/material';
 
 function ProductList() {
   const [state, dispatch] = useStoreContext();
-
-  const { currentCategory } = state;
-
-  const { loading, data } = useQuery(QUERY_PRODUCTS);
 
   const [allStripeProducts, setAllStripeProducts] = React.useState([]);
 
@@ -31,32 +23,15 @@ function ProductList() {
     prods.then((res) => {
       setAllStripeProducts(res);
     });
-    if (data) {
-      dispatch({
-        type: UPDATE_PRODUCTS,
-        products: data.products,
-      });
-      data.products.forEach((product) => {
-        idbPromise('products', 'put', product);
-      });
-    } else if (!loading) {
-      idbPromise('products', 'get').then((products) => {
-        dispatch({
-          type: UPDATE_PRODUCTS,
-          products: products,
-        });
-      });
-    }
-  }, [data, loading, dispatch]);
+  }, [dispatch]);
 
-  function filterProducts() {
-    if (!currentCategory) {
-      return state.products;
+  if (allStripeProducts.length) {
+    for (let i = 0; i < allStripeProducts.length; i++) {
+      console.log(allStripeProducts[i].quantity);
+      if (allStripeProducts[i].quantity == 0) {
+        allStripeProducts.splice(i, 1);
+      }
     }
-
-    return state.products.filter(
-      (product) => product.category._id === currentCategory
-    );
   }
 
   return (
@@ -82,7 +57,6 @@ function ProductList() {
         <Typography variant="h6" component="h3" sx={{ color: '#EEABCE' }}>
           You haven't added any products yet!</Typography>
       )}
-      {loading ? <img src={spinner} alt="loading" /> : null}
     </div>
   );
 }

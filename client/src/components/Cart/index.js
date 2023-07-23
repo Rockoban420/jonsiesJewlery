@@ -14,7 +14,6 @@ const stripePromise = loadStripe('pk_test_51NTbuDBXuASLC5T1S67fet9OLzbRIVR4OGe8T
 const Cart = () => {
   const [state, dispatch] = useStoreContext();
   const [checkoutData, setCheckoutData] = React.useState([]);
-  const [allStripeProducts, setAllStripeProducts] = React.useState([]);
   const [doCheckout, setDoCheckout] = React.useState(false);
   const [sessionData, setSessionData] = React.useState([]);
 
@@ -30,7 +29,6 @@ const Cart = () => {
     if (doCheckout && sessionData?.session?.id) {
       stripePromise.then((res) => {
         res.redirectToCheckout({ sessionId: sessionData.session.id });
-        console.log('redirecting');
       });
     }
   }, [doCheckout, sessionData]);
@@ -70,7 +68,6 @@ function submitCheckout(e) {
   console.log(productIds, 'productIds');
   setCheckoutData(productIds);
   setDoCheckout(true);
-  console.log(e);
 }
 
 if (!state.cartOpen) {
