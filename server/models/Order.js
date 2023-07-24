@@ -10,7 +10,7 @@ const orderSchema = new Schema({
   products: [
     {
       name: String,
-      Image: String,
+      image: String,
       price: Number,
       quantity: Number,
     }
