@@ -69,11 +69,11 @@ function Nav() {
             <Button variant="outlined" component={Link} to="/orderHistory" sx={{ mx: 1 }}>
               Order History
             </Button>
-            <Button variant="outlined" onClick={handleLogout} sx={{ mx: 1 }}>
-              Logout
-            </Button>
             <Button variant="outlined" component={Link} to="/contact" sx={{ mx: 1 }}>
               Contact
+            </Button>
+            <Button variant="outlined" onClick={handleLogout} sx={{ mx: 1 }}>
+              Logout
             </Button>
           </>
         ) : (
