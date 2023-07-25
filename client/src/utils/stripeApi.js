@@ -40,7 +40,7 @@ export const allProducts = async () => {
 }
 
 export const checkout = async (sesh) => {
-    const url = 'https://jonsies-jewlery-19583fefdde0.herokuapp.com/';
+    const url = 'https://jonsies-jewlery-19583fefdde0.herokuapp.com';
     const user = Auth.getProfile();
     console.log(user);
     // const url = new URL(session.headers.referer).origin;
