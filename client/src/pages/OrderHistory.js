@@ -12,13 +12,13 @@ function OrderHistory() {
   if (data) {
     user = data.user;
   }
-  console.log(user, 'user');
+
+  console.log(user);
 
   return (
     <>
       <div className="container my-1">
         <Link to="/">← Back to Products</Link>
-
         {user ? (
           <>
             <Typography variant="h4" sx={{ fontFamily: 'Ultra', color: '#674B3D' }} gutterBottom>
@@ -32,7 +32,7 @@ function OrderHistory() {
                 <div className="flex-row">
                   {order.products.map(({ name, price }, index) => (
                     <div key={index} className="card px-1 py-1">
-                        <p>{name}</p>
+                      <p>{name}</p>
                       <div>
                         <span>${price}</span>
                       </div>
