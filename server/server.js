@@ -33,7 +33,7 @@ app.get('/:whatever', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/build/index.html'));
 });
 
-app.get('/:whatever/:whatever2', (req, res) => {
+app.get('/user/:wildcard', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/build/index.html'));
 });
 
